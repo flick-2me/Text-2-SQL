@@ -1,0 +1,9 @@
+streamlit>=1.40
+langchain>=0.3
+langchain-community>=0.3
+langchain-groq>=1.0
+sqlalchemy>=2.0
+pandas>=2.0
+seaborn>=0.13
+# only needed if you use the MySQL option
+mysql-connector-python>=9.0
