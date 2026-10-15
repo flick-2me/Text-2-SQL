@@ -38,16 +38,6 @@ python load_data.py --csv ~/Downloads/netflix_titles.csv --table netflix
 Column names are lowercased and spaces become underscores. Add `--append` to
 add rows to an existing table instead of replacing it.
 
-## Bugs fixed from the original app.py
-
-| Original | Problem |
-|---|---|
-| `os.environ['GROQ_API_KEY'] = api_key` then `ChatGroq(...)` | Ran before the key was checked, so the app crashed on first load with an empty key. Now guarded by `st.stop()`. |
-| `st.info("Please enter...")` | Displayed a message but execution continued anyway. |
-| `agent.run(query, callbacks=[cb])` | `.run()` is removed in current LangChain. Now `agent.invoke({"input": q}, {"callbacks": [cb]})`. |
-| `if 'messages' not in st.session_state or st.sidebar.button(...)` | Short-circuit `or` meant the Clear button never rendered on first load. Now created separately. |
-| `st.text_input("Enter your Groq API Key")` | Key was visible in plain text. Now `type="password"`. |
-| No error handling around the agent | Any SQL or API error crashed the whole app. Now caught and shown in the chat. |
 
 ## Safety note
 
